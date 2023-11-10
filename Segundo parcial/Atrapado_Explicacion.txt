@@ -1,0 +1,29 @@
+El codigo de "Atrapado" entrena a un agente para encontrar dentro de un entorno una entidad posicionada al azar y rodearla, siendo recompensado cuando ocupa las casillas a su alrededor o sobre la misma.
+
+Ciclo de funcionalidad del codigo
+1. Se inicializa una matriz de recompenzas a 0.
+2.Se inicia un ciclo para cada episodio de entrenamiento.
+3.Para cada episodio de inicializa la posición del agente y la entidad de manera aleatoria.
+4.El buble continua mientras el agente no reciba una recompensa al estar cerca de la entidad.
+5.Dentro del bucle se obtienen los estados actuales, las posiciones y se toma una decisión para el agente basada en la probabilidad de epsilon. Se limita los movimientos del agente para no salir de los límites del entorno y se obtiene la recompensa para la próxima posición del agente, el próximo estado después de esa acción y con todo ello se llama a la Q_table que contiene la formula de Bellman para calcular el nuevo valor Q con el estado y accion actuales, basándose en la recompensa adquirisa y el valor Q max que se puede obtener en el próximo estado.
+6. Se actualizan posiciones y se marca en la matriz las recompensas del agente cuando terminan los episodios de entrenamiento.
+
+Implementación
+1.Importación de bibliotecas Numpy y Matplotlib.pyplot
+2.Se define la clase Enviroment con los métodos para inicializar el entorno y obtener el estado actual del mismo.
+3.Se define la clase Agent con los métodos de inicializar el agente, elegir acción, actualizar QTable y entrenarlo.
+3.Se define la función Train_agent que entrena al agente y llama a las clases.
+4.Se trazan las recompensas obtenidas con la función Plot_rewards.
+5.Se le asigna un valor de 100 a la posición de la entidad en la matriz de recompensas.
+6.Se grafica el resultado 
+
+Parámetros utilizados
+Episodes: numero de episodios 400
+Alpha: Learning rate
+Gamma: Discount factor
+Epsilon: Probabilidad de exploracion o explotación
+Dimensiones del entorno: 7x7
+
+Consideraciones:
+-Se dio prioridad a la exploración del agente ya que se obtienen resultados más completos.
+-El código recompensa al agente cuando cae a una distancia de 1 o menos de la entidad.
